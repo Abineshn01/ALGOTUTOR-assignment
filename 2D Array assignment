@@ -1,0 +1,31 @@
+//spiral matrix
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+
+
+        vector<vector<int>>ans (n,vector<int>(n));
+        int cnt = 1;
+        for(int layer = 0;layer <(n+1)/2 ;layer++)
+        {
+            for(int p=layer;p<n-layer;p++)
+            {
+                ans[layer][p]=cnt++;
+            }
+            for(int p=layer+1;p<n-layer;p++)
+            {
+                ans[p][n-layer-1]=cnt++;
+            }
+            for(int p=n-layer-2;p>=layer;p--)
+            {
+                ans[n-layer-1][p]=cnt++;
+            }
+            for(int p=n-layer-2;p>layer;p--)
+            {
+                ans[p][layer]=cnt++;
+            }
+        }
+        return ans;
+    }
+};
